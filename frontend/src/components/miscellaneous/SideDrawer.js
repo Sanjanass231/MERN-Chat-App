@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Button, Tooltip, Text, Menu, MenuButton, MenuList, Avatar, MenuItem, MenuDivider, Drawer, DrawerOverlay, DrawerContent, DrawerHeader, DrawerBody, Spinner, useDisclosure, Input, useToast } from "@chakra-ui/react";
+import { Box, Button, Tooltip, Text, Menu, MenuButton, MenuList, Avatar, MenuItem, MenuDivider, Drawer, DrawerOverlay, DrawerContent, DrawerHeader, DrawerBody, Spinner, useDisclosure, Input, useToast, effect } from "@chakra-ui/react";
 import { BellIcon ,ChevronDownIcon} from '@chakra-ui/icons';
 import { ChatState } from '../../Context/ChatProvider';
 import ProfileModel from './ProfileModel';
@@ -7,7 +7,6 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import axios from "axios";
 import ChatLoading from '../ChatLoading';
 import UserListItem from '../UserAvatar/UserListItem';
-
 
 const SideDrawer = () => {
     const [search, setSearch] = useState("");
@@ -19,8 +18,6 @@ const SideDrawer = () => {
       const { isOpen, onOpen, onClose } = useDisclosure();
     const history = useHistory();
      const {
-       notification,
-       setNotification,
        chats,
        setChats,
      } = ChatState();
@@ -124,13 +121,6 @@ const SideDrawer = () => {
         </Text>
         <div>
           <Menu>
-            <MenuButton p={1}>
-              <BellIcon fontSize="2px" m={1} />
-            </MenuButton>
-            {/* <MenuList>  
-                      </MenuList> */}
-          </Menu>
-          <Menu>
             <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
               <Avatar
                 size="sm"
@@ -172,11 +162,9 @@ const SideDrawer = () => {
                   user={user}
                   handleFunction={() => accessChat(user._id)}
                 />
-                                ))
-        )
-        }
-                      {loadingChat && <Spinner ml="auto" display="flex" />}
-                      
+              ))
+            )}
+            {loadingChat && <Spinner ml="auto" display="flex" />}
           </DrawerBody>
         </DrawerContent>
       </Drawer>
