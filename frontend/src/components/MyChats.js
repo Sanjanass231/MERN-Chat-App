@@ -78,12 +78,12 @@ const MyChats = ({ fetchAgain }) => {
         </GroupChatModal>
       </Box>
       <Box
-        d="flex"
+        display="flex"
         flexDir="column"
         p={3}
         bg="#F8F8F8"
         w="100%"
-        h="90%"
+        h={["80%", "85%", "90%"]}
         borderRadius="lg"
         overflowY="scroll"
       >
